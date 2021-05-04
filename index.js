@@ -5,7 +5,7 @@ const kafka = require("kafka-node")
 
 //Creating the consumer
 Consumer = kafka.Consumer,
-client = new kafka.KafkaClient({kafkaHost: "13.69.49.187:9092"}),
+client = new kafka.KafkaClient({kafkaHost: "localhost:9092"}),
 consumer = new Consumer(
 	client,
 	[{ topic: 'parking', fromBeginning: true }, { topic: 'wifiusr', fromBeginning: true }],
