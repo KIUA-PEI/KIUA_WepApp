@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import socketIOClient from "socket.io-client";
-//const ENDPOINT = "http://peiwebapp.azurewebsites.net/:8080";
-const ENDPOINT = process.env.PORT || 8080;
+const ENDPOINT = "http://peiwebapp.azurewebsites.net/";
+//const ENDPOINT = process.env.PORT || 8080;
 
 export default function ClientComponent() {
   const [parkings, setParkings] = useState("");
