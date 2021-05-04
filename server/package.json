@@ -1,0 +1,14 @@
+{
+    "name": "socket-chat-example",
+    "version": "0.0.1",
+    "description": "my first socket.io app",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "http": "0.0.1-security",
+        "kafka-node": "^5.0.0",
+        "kafkajs": "^1.15.0",
+        "path": "^0.12.7",
+        "socket.io": "^4.0.1"
+    }
+}
