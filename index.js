@@ -9,7 +9,8 @@ client = new kafka.KafkaClient({kafkaHost: "13.69.49.187:9092"}),
 consumer = new Consumer(
 	client,
 	[{ topic: 'parking', fromBeginning: true }, { topic: 'wifiusr', fromBeginning: true }],
-	{ autoCommit: false }
+	{ autoCommit: false },
+  { connectionTimeout: 20000000},
 );
 
 
@@ -30,17 +31,16 @@ const consume = async () => {
 	});
 }
 
+
 consume().catch((err) => {
-  console.error("error in consumer: ", err)
+  console.error("error in consumer: ", err);
 })
 
 
 /* Server Code */
 const PORT = process.env.PORT || 4001;
-const socketIo = require("socket.io");
 var cors = require('cors');
 const express = require('express');
-
 const APPINDEX = 'build/index.html';
 
 const server = express()
@@ -56,7 +56,7 @@ const io = require('socket.io')(server, {
   }
 });
 
-let interval;
+let interval = 1000;
 
 io.on("connection", (socket) => {
   console.log("New client connected");
@@ -69,4 +69,7 @@ io.on("connection", (socket) => {
     clearInterval(interval);
   });
 });
-  
+
+process.on('uncaughtException', function (err) {
+  console.log("ERROR");
+});

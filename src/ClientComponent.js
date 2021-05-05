@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import socketIOClient from "socket.io-client";
-const ENDPOINT = "http://peiwebapp.azurewebsites.net/";
-//const ENDPOINT = process.env.PORT || 8080;
+const ENDPOINT = process.env.PORT || 80;
 
 export default function ClientComponent() {
   const [parkings, setParkings] = useState("");
   const [routers, setRouters] = useState("");
+  const [date, setData] = useState("");
 
   useEffect(() => {
     const socket = socketIOClient(ENDPOINT);
@@ -28,6 +28,7 @@ export default function ClientComponent() {
       <h4>Estacionamento: {parkings.Nome} Capacidade: {parkings.Capacidade} Ocupados: {parkings.Ocupado} Livres: {parkings.Livre}</h4>
       
       <h4>Deti: {routers.deti} It: {routers.it} Dmat: {routers.dmat}</h4>
+      <h6>Data: {date}</h6>
     </div>
   );
 }
