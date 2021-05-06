@@ -61,7 +61,7 @@ const io = require('socket.io')(server, {
   }
 });
 
-let interval = 10000000000;
+let interval = 100000;
 
 io.on("connection", (socket) => {
   console.log("New client connected");
@@ -75,6 +75,6 @@ io.on("connection", (socket) => {
   });
 });
 
-process.on('uncaughtException', function (err) {
+/*process.on('uncaughtException', function (err) {
   console.log("ERROR");
-});
+});*/
