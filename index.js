@@ -32,14 +32,10 @@ const consume = async () => {
 }
 
 
-try{
-  consume().catch((err) => {
-    console.error("error in consumer: ", err);
-  })
-}
-catch(e){
-  console.log("KafkaError");
-}
+
+consume().catch((err) => {
+  console.error("error in consumer: ", err);
+})
 
 
 /* Server Code */
