@@ -5,7 +5,7 @@ const kafka = require("kafka-node")
 
 //Creating the consumer
 Consumer = kafka.Consumer,
-client = new kafka.KafkaClient({kafkaHost: "13.69.49.187:9092"}),
+client = new kafka.KafkaClient({kafkaHost: "localhost:9092"}),
 consumer = new Consumer(
 	client,
 	[{ topic: 'parking', fromBeginning: true }, { topic: 'wifiusr', fromBeginning: true }],
@@ -27,7 +27,7 @@ const consume = async () => {
 			console.log("ROUTERS");
 			io.emit('Router', data);
 		}
-		console.log(data);
+		//console.log(data);
 	});
 }
 
@@ -50,7 +50,6 @@ const server = express()
   .get('/', (req, res) => res.sendFile(APPINDEX, { root: __dirname }))
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
-
 const io = require('socket.io')(server, {
   cors: {
     origin: '*',
@@ -61,6 +60,7 @@ let interval = 100000;
 
 io.on("connection", (socket) => {
   console.log("New client connected");
+  io.emit("Hello", "Hello from server!");
   if (interval) {
     clearInterval(interval);
   }

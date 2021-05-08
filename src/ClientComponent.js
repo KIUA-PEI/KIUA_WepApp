@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import socketIOClient from "socket.io-client";
-const ENDPOINT = "http://127.0.0.1:4001";
+const ENDPOINT = "https://peiwebapp.azurewebsites.net/:4001";
+//const ENDPOINT = "http://localhost:4001";
 
 export default function ClientComponent() {
   const [parkings, setParkings] = useState("");
@@ -9,14 +10,17 @@ export default function ClientComponent() {
   useEffect(() => {
     const socket = socketIOClient(ENDPOINT);
 
+    socket.on("Hello", data => {
+      console.log("Hello from server" + data);
+    });
+
     socket.on("Parking", data => {
-      setParkings({Nome: data[1].Nome, Capacidade: data[1].Capacidade, Ocupado: data[1].Ocupado, Livre: data[1].Livre});
-      console.log("PARKING");
+      setParkings({Nome: data.PARK[1].Nome, Capacidade: data.PARK[1].Capacidade, Ocupado: data.PARK[1].Ocupado, Livre: data.PARK[1].Livre});
     });
     socket.on("Router", data => {
-      setRouters({deti: data[0].deti, it: data[0].it, dmat: data[0].dmat});
-      console.log("ROUTERS");
+      setRouters({deti: data.WIFIUSR[1].deti, it: data.WIFIUSR[1].it, dmat: data.WIFIUSR[1].dmat});
     });
+
 
     return () => socket.close();
 
