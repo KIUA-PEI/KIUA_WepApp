@@ -6,12 +6,14 @@ const ENDPOINT = "https://peiwebapp.azurewebsites.net/:4001";
 export default function ClientComponent() {
   const [parkings, setParkings] = useState("");
   const [routers, setRouters] = useState("");
+  const [date, setData] = useState("");
 
   useEffect(() => {
     const socket = socketIOClient(ENDPOINT);
 
     socket.on("Hello", data => {
-      console.log("Hello from server" + data);
+      console.log("Date");
+      setData(data);
     });
 
     socket.on("Parking", data => {
@@ -28,6 +30,7 @@ export default function ClientComponent() {
 
   return (
     <div>
+      <h6>Data: {date}</h6>
       <h4>Estacionamento: {parkings.Nome} Capacidade: {parkings.Capacidade} Ocupados: {parkings.Ocupado} Livres: {parkings.Livre}</h4>
       
       <h4>Deti: {routers.deti} It: {routers.it} Dmat: {routers.dmat}</h4>

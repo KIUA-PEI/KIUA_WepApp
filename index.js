@@ -71,6 +71,12 @@ io.on("connection", (socket) => {
   });
 });
 
+function intervalFunc() {
+  var d = new Date();
+  io.emit("Hello", d); 
+}
+
+setInterval(intervalFunc, 10000);
 /*process.on('uncaughtException', function (err) {
   console.log("ERROR");
 });*/
