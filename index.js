@@ -76,7 +76,7 @@ function intervalFunc() {
   io.emit("Hello", d); 
 }
 
-setInterval(intervalFunc, 10000);
+setInterval(intervalFunc, 1000);
 /*process.on('uncaughtException', function (err) {
   console.log("ERROR");
 });*/

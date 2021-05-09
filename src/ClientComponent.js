@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import socketIOClient from "socket.io-client";
-const ENDPOINT = "https://peiwebapp.azurewebsites.net/:4001";
+const ENDPOINT = "https://peiwebapp.azurewebsites.net/";
 //const ENDPOINT = "http://localhost:4001";
 
 export default function ClientComponent() {
