@@ -1,28 +1,15 @@
-import logo from './logo.svg';
+import React from 'react'; 
 import './App.css';
-import React, { useState } from "react";
-//import socketIOClient from "socket.io-client";
-import ClientComponent from "./ClientComponent";
 
-//const ENDPOINT = "http://localhost:4001";
+import {BrowserRouter as Router} from 'react-router-dom';
+
+import Home from './pages';
 
 function App() {
-  const [loadClient, setLoadClient] = useState(true);
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <>
-        {/* LOAD OR UNLOAD THE CLIENT */}
-        <button onClick={() => setLoadClient(prevState => !prevState)}>
-          STOP CLIENT
-        </button>
-        {/* SOCKET IO CLIENT*/}
-        {loadClient ? <ClientComponent /> : null}
-        </>
-      </header>
-    </div>
+    <Router>
+        <Home/>
+    </Router>
   );
 }
 
