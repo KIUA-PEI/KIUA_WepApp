@@ -313,13 +313,13 @@ const RealTime = ({lightBg,id}) => {
             </InfoContainerRT>
             <InfoContainerRT lightBg={!lightBg} id="parking">
                 <InfoWrapperRT>
-                <h1>Estacionamentos</h1>
-                <h5>Dados em tempo real relativamente aos estacionamentos da Universidade de Aveiro</h5>
+                <h1>Parkings</h1>
+                <h5>Real time data from the parkings of the University of Aveiro</h5>
                    <br></br><br></br> 
                     <div style={{textAlign: "center"}}>
                         <div  className="graph" class="container">
                             <div class="row">
-                            <h4>Número total de lugares nos Estacionamentos</h4>
+                            <h4>Total number of spots in the parkings</h4>
                                 <div class>
                                     <PieChart width={1000} height={400} >
                                         <Pie
@@ -344,7 +344,7 @@ const RealTime = ({lightBg,id}) => {
 
                                 <div class="col-5 col-md-2" >
                                     <article id="idBarchart">
-                                        <h4>Ocupação dos Estacionamentos</h4>
+                                        <h4>Parkings Occupation</h4>
                                         <br></br>
                                         <BarChart
                                             isAnimationActive={true}
