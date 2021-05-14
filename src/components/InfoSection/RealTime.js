@@ -6,9 +6,7 @@ import { PieChart, Pie, Tooltip, Cell, BarChart, CartesianGrid, XAxis,YAxis,Lege
 
 import socketIOClient from "socket.io-client";
 const ENDPOINT = "https://peiwebapp.azurewebsites.net/";
-
-
-
+//const ENDPOINT = "http://localhost:4001/";
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#0088FE', '#00C49F', '#FFBB28', '#FF8042','#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 const RealTime = ({lightBg,id}) => {
@@ -57,10 +55,10 @@ const RealTime = ({lightBg,id}) => {
               essua: data.WIFIUSR[1].essua,
               isca: data.WIFIUSR[1].isca,
               aauav: data.WIFIUSR[1].aauav,
-              dcivil: data.WIFIUSR[1].dcivil,
+              dcivil: data.WIFIUSR[1].decivil,
               dem: data.WIFIUSR[1].dem,
               dlc: data.WIFIUSR[1].dlc,
-              ieeta: data.WIFIUSR[1].ieeta
+              ieeta: data.WIFIUSR[1].ietta
             });
         });
     
@@ -315,18 +313,19 @@ const RealTime = ({lightBg,id}) => {
                 <InfoWrapperRT>
                 <h1>Parkings</h1>
                 <h5>Real time data from the parkings of the University of Aveiro</h5>
+                <h5>{date}</h5>
                    <br></br><br></br> 
                     <div style={{textAlign: "center"}}>
                         <div  className="graph" class="container">
                             <div class="row">
-                            <h4>Total number of spots in the parkings</h4>
+                            <h4>Total number of spots per parking</h4>
                                 <div class>
                                     <PieChart width={1000} height={400} >
                                         <Pie
                                             dataKey="total"
                                             isAnimationActive={true}
                                             data={parkings}
-                                            cx={540}
+                                            cx={500}
                                             cy={175}
                                             outerRadius={150}
                                             fill="#8884d8"

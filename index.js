@@ -3,6 +3,9 @@ const kafka = require("kafka-node")
 //const brokers = ["13.69.49.187:9092"]
 //const brokers = ["localhost:9092"]
 
+let parkData;
+let wifiData;
+
 //Creating the consumer
 Consumer = kafka.Consumer,
 client = new kafka.KafkaClient({kafkaHost: "13.69.49.187:9092"}),
@@ -22,9 +25,11 @@ const consume = async () => {
 		const data = JSON.parse(new Buffer.from(message.value).toString());
 		if(message.topic == 'parking'){
 			console.log("PARKING");
+      parkData = data;
 			io.emit('Parking', data);
 		} else {	
 			console.log("ROUTERS");
+      wifiData = data;
 			io.emit('Router', data);
 		}
 		//console.log(data);
@@ -61,6 +66,14 @@ let interval = 1000000;
 io.on("connection", (socket) => {
   console.log("New client connected");
   io.emit("Hello", "Hello from server!");
+
+  if(typeof parkData != "undefined"){
+    io.emit('Parking', parkData);
+  }
+  if(typeof wifiData != "undefined"){
+    io.emit('Router', wifiData);
+  }
+
   if (interval) {
     clearInterval(interval);
   }
