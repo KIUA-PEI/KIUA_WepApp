@@ -26,7 +26,7 @@ const Navbar = ({toggle}) => {
                         </NavItem>
                     </NavMenu>
                     <NavBtn>
-                        <NavBtnLink to='signin' smooth={true}>Graphs</NavBtnLink>
+                        <NavBtnLink to={{ pathname: "http://kiuabackoffice.azurewebsites.net/" }} target="_blank" >See Backoffice</NavBtnLink>
                     </NavBtn>
                 </NavbarContainer>
             </Nav>

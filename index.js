@@ -86,7 +86,13 @@ io.on("connection", (socket) => {
 
 function intervalFunc() {
   var d = new Date();
-  io.emit("Hello", d); 
+  let date = ("0" + d.getDate()).slice(-2);
+  let month = ("0" + (d.getMonth() + 1)).slice(-2);
+  let year = d.getFullYear();
+  let hours = d.getHours();
+  let minutes = d.getMinutes();
+  let seconds = d.getSeconds();
+  io.emit("Hello", year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds); 
 }
 
 setInterval(intervalFunc, 1000);
